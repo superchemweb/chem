@@ -4,7 +4,8 @@ export let lessons = [
         content: [
             {
                 type: "theory",
-                filename: "https://docs.google.com/document/d/1h28ocSi01CRa6hTgJtMv0G4uySVyxcpl/edit?usp=sharing&ouid=106265925099932943627&rtpof=true&sd=true"
+                filename: "https://docs.google.com/document/d/1h28ocSi01CRa6hTgJtMv0G4uySVyxcpl/edit?usp=sharing&ouid=106265925099932943627&rtpof=true&sd=true",
+                name: "Khái niệm, danh pháp, tính chất vật lí"
             }, {
                 type: "ex1",
                 questions: [

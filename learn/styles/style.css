@@ -43,7 +43,7 @@ nav > div:hover {
 nav img {
     width: 30px;
     height: 30px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .logo-title {
@@ -108,6 +108,9 @@ nav img {
 
 /* Level button styles */
 .level-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -117,28 +120,23 @@ nav img {
     transition: transform 0.2s ease;
 }
 
-.level-btn.lock-level::before {
-    content: "🔒";
+.level-logo {
+    width: 40px;
 }
 
-.level-btn.unlock-level::before {
-    content: "✓";
-}
-
-.level-btn.lock-level {
+.level-btn.not-done-level {
     background-color: rgb(220, 220, 220);
     font-size: 30px;
     text-align: center;
     line-height: 70px;
 }
 
-.level-btn.unlock-level {
-    background-color: rgb(0, 180, 120);
+.level-btn.done-level {
+    background-color: rgb(2, 218, 146);
     color: white;
     font-weight: 700;
     font-size: 30px;
     text-align: center;
-    line-height: 70px;
 }
 
 .level-btn:hover {
@@ -268,4 +266,26 @@ nav img {
     .right-section {
         display: none; /* Ẩn ở màn hình nhỏ */
     }
+}
+
+.part-name {
+    position: relative;
+    display: inline-block;
+    color: #00b0bd;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    margin: 25px 0 35px 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 128, 255, 0.05));
+    border: 3px solid rgba(0, 200, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.3), inset 0 0 8px rgba(0, 200, 255, 0.2);
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+}
+
+@keyframes borderflow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }

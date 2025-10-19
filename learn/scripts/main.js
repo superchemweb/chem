@@ -6,51 +6,51 @@ let units = JSON.parse(localStorage.getItem('units')) || [
         levels: [
             {
                 name: "Dạng 1. Khái niệm, Danh pháp, Tính chất vật lí",
-                state: "unlock",
+                isDone: 'done',
                 type: "theory"
             }, {
                 name: "Luyện tập dạng 1 (Trắc nghiệm lựa chọn)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex1"
             }, {
                 name: "Luyện tập dạng 1 (Trắc nghiệm đúng sai)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex2"
             }, {
                 name: "Luyện tập dạng 1 (Tự luận trả lời ngắn)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex3"
             }, {
                 name: "Dạng 2. Tính chất hóa học",
-                state: "unlock",
+                isDone: 'done',
                 type: "theory"
             }, {
                 name: "Luyện tập dạng 2 (Trắc nghiệm lựa chọn)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex1"
             }, {
                 name: "Luyện tập dạng 2 (Trắc nghiệm đúng sai)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex2"
             }, {
                 name: "Luyện tập dạng 2 (Tự luận trả lời ngắn)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex3"
             }, {
                 name: "Dạng 3. Ứng dụng, Điều chế",
-                state: "unlock",
+                isDone: 'done',
                 type: "theory"
             }, {
                 name: "Luyện tập dạng 3 (Trắc nghiệm lựa chọn)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex1"
             }, {
                 name: "Luyện tập dạng 3 (Trắc nghiệm đúng sai)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex2"
             }, {
                 name: "Luyện tập dạng 3 (Tự luận trả lời ngắn)",
-                state: "lock",
+                isDone: 'not-done',
                 type: "ex3"
             },
             
@@ -61,12 +61,12 @@ let units = JSON.parse(localStorage.getItem('units')) || [
 localStorage.setItem('units', JSON.stringify(units));
 
 const params = new URLSearchParams(window.location.search);
-const unlock_pr = params.get('unlock');
+const mark_pr = params.get('mark');
 const unit_pr = params.get('unit');
 const level_pr = params.get('level');
 
-if (unlock_pr === 'true') {
-    units[unit_pr - 1].levels[Number(level_pr)].state = 'unlock';
+if (mark_pr === 'true') {
+    units[unit_pr - 1].levels[Number(level_pr)].isDone = 'done';
     localStorage.setItem('units', JSON.stringify(units));
 }
 
@@ -86,12 +86,14 @@ function displayUnits() {
         levels.forEach((level, idx) => {
             html += `
                 <div class="level">
-                    <div class="level-btn ${level.state}-level">
+                    ${level.type === "theory" ? `<div class="part-name">${level.name}</div>` : ""}
+                    <div class="level-btn ${level.isDone}-level">
+                        <img src="../../assets/images/${level.type}-logo.svg" class="level-logo">
                     </div>
                     <div class="intro-level">
                         <span class="level-name">${level.name}</span>
                         <a class="start-btn" href="lesson/lesson.html?unit=${id}&level=${idx}&type=${level.type}">Bắt đầu</a>
-                    </div>
+                       </div>
                 </div>
             `;
         });
@@ -106,7 +108,7 @@ function displayUnits() {
 
 function addEvent() {
     // Lấy tất cả các level-btn có trạng thái unlock
-    const levelButtons = document.querySelectorAll('.level-btn.unlock-level');
+    const levelButtons = document.querySelectorAll('.level-btn');
 
     levelButtons.forEach((btn, idx) => {
         btn.addEventListener('click', () => {

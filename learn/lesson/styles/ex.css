@@ -344,9 +344,9 @@ body {
     padding: 12px 20px;
     font-size: 30px;
     border-radius: 10px;
-    border: 4px solid #00f0ff;
-    background-color: rgba(228, 228, 228, 0.2);
-    color: #fff;
+    border: 3px dashed #00f0ff;
+    background-color: rgba(255, 255, 255, 0.274);
+    color: #6d306d;
     text-align: center;
     transition: all 0.3s ease;
 }
@@ -380,6 +380,7 @@ body {
 
 .explain-text {
     font-weight: 500;
+    font-size: 25px;
 }
 
 /* Nút kiểm tra / tiếp tục */

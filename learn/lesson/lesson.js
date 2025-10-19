@@ -28,7 +28,7 @@ if (type === 'theory') {
 
     // done-btn
     document.querySelector('.done-btn').addEventListener('click', () => {
-        window.location.href = `../learn.html?unlock=true&unit=${unit}&level=${level + 1}`
+        window.location.href = `../learn.html?mark=true&unit=${unit}&level=${level}`
     });
 } else if (type === 'ex1') {
     // Giả sử đã có biến: unit, level, lesson
@@ -76,7 +76,7 @@ if (type === 'theory') {
     function displayQuestion() {
         if (lessonQueue.length === 0) {
             alert("Bạn đã hoàn thành tất cả câu hỏi!");
-            document.location.href = `../learn.html?unlock=true&unit=${unit}&level=${level + 1}`;
+            document.location.href = `../learn.html?mark=true&unit=${unit}&level=${level}`;
             return;
         }
 
@@ -100,7 +100,7 @@ if (type === 'theory') {
 
         // Ảnh (nếu có)
         if (img && img !== 'none') {
-            imgElement.innerHTML = `<img src="../../assets/learn-assets/ques-img/1.2.1-cam.webp" alt="Question image" class="question-img">`;
+            imgElement.innerHTML = `<img src="../../assets/learn-assets/ques-img/${img}" alt="Question image" class="question-img">`;
         } else {
             imgElement.innerHTML = '';
         }
@@ -211,7 +211,7 @@ if (type === 'theory') {
     function displayQuestion() {
         if (lessonQueue.length === 0) {
             alert("Bạn đã hoàn thành tất cả câu hỏi!");
-            document.location.href = `../learn.html?unlock=true&unit=${unit}&level=${level + 1}`;
+            document.location.href = `../learn.html?mark=true&unit=${unit}&level=${level}`;
             return;
         }
 
@@ -365,7 +365,7 @@ if (type === 'theory') {
     function displayQuestion() {
         if (lessonQueue.length === 0) {
             alert("Bạn đã hoàn thành tất cả câu hỏi!");
-            document.location.href = `../learn.html?unlock=true&unit=${unit}&level=${level + 1}`;
+            document.location.href = `../learn.html?mark=true&unit=${unit}&level=${level}`;
             return;
         }
 
