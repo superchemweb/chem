@@ -2,13 +2,13 @@ function submitData() {
     // Lấy giá trị từ input
     const timeValue = document.querySelector('.timeInput').value;
     // Xây dựng URL với dữ liệu
-    const targetUrl = `contest/index.html?time=${encodeURIComponent(timeValue)}`;
+    const targetUrl = `fixed/index.html?time=${encodeURIComponent(timeValue)}`;
     // Điều hướng đến trang mới
     window.location.href = targetUrl;
 }
 
 function openHistoryExam(index) {
-    const targetUrl = `history-exams/index.html?index=${encodeURIComponent(index)}`;
+    const targetUrl = `history/history.html?index=${encodeURIComponent(index)}`;
     window.location.href = targetUrl;
 }
 
@@ -21,7 +21,7 @@ timeInput.addEventListener('input', () => {
 
     // Kiểm tra nếu không phải số nguyên hoặc nằm ngoài khoảng [1, 359]
     if (!Number.isInteger(Number(value)) || value < 1 || value > 359) {
-        timeInput.value = 120;
+        timeInput.value = 50;
     } else {
         timeInput.style.border = ''; // Bỏ viền đỏ khi hợp lệ
     }
@@ -36,10 +36,10 @@ timeInput.addEventListener('keypress', (event) => {
 });
 
 function renderHistoryExams() {
-    let exams = JSON.parse(localStorage.getItem('history_exams')) || [];
+    let exams = JSON.parse(localStorage.getItem('history-exam-data')) || [];
     console.log(exams);
     let html = '';
-    exams.reverse().forEach((exam, index) => {
+    exams.forEach((exam, index) => {
         let name = exam.name;
         html += `
             <div class="exam-container">
@@ -59,7 +59,7 @@ function renderHistoryExams() {
     document.querySelectorAll('.delete-exam').forEach((btn, index) => {
         btn.addEventListener('click', () => {
             exams.splice(index, 1);
-            localStorage.setItem('history_exams', JSON.stringify(exams));
+            localStorage.setItem('history-exam-data', JSON.stringify(exams));
             renderHistoryExams();
         })
     });
